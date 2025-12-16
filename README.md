@@ -1,5 +1,7 @@
+
 # infra-local
 Repositorio de infraestructura local que permite levantar los microservicios y sus bases de datos mediante Docker Compose. Incluye la configuración necesaria para inicializar las bases de datos y facilitar el entorno de desarrollo sin pasos manuales adicionales
+
 
 # Account y Customer Services
 
@@ -78,17 +80,26 @@ Puerto por defecto:
 ## Estructura del proyecto
 
 ```
+<<<<<<< HEAD
 
 ├── account-service/
 │   ├── Dockerfile
 │   ├── pom.xml
 │   └── src/
+=======
+Pruebas/
+│
+├── README.md
+├── docker-compose.yml
+├── postman_collection.json
+>>>>>>> 7833234 (Initial commit - local infrastructure with docker-compose)
 │
 ├── customer-service/
 │   ├── Dockerfile
 │   ├── pom.xml
 │   └── src/
 │
+<<<<<<< HEAD
 └── infra-local/
     ├── README.md
     ├── docker-compose.yml
@@ -97,6 +108,15 @@ Puerto por defecto:
         ├── init.sql
         ├── account-schema.sql
         └── customer-schema.sql
+=======
+└── account-service/
+    ├── Dockerfile
+    ├── pom.xml
+    └── src/
+```
+
+En la raíz del proyecto se incluye una **colección de Postman** con los endpoints principales para facilitar las pruebas.
+>>>>>>> 7833234 (Initial commit - local infrastructure with docker-compose)
 
 ---
 
@@ -264,4 +284,5 @@ Creado por **JAIR CASTILLO**
 Backend Java Developer
 Cel 3204584846
 Experiencia en Java, Spring Boot, microservicios y arquitectura backend.
+
 

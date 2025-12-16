@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "eac81bd0-9f19-408c-8d54-c2a4826f311d",
+		"name": "Pruebas DEVSU",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14317344",
+		"_collection_link": "https://jj6666-6658.postman.co/workspace/jj-Workspace~0790a04f-3c60-4b51-874c-aaa94d90516a/collection/14317344-eac81bd0-9f19-408c-8d54-c2a4826f311d?action=share&source=collection_link&creator=14317344"
+	},
+	"item": [
+		{
+			"name": "Crear cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\": \"C001\",\r\n  \"password\": \"1234\",\r\n  \"name\": \"Jair Castillo\",\r\n  \"gender\": \"M\",\r\n  \"age\": 33,\r\n  \"address\": \"Calle Fake 123\",\r\n  \"phone\": \"3204584846\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener cliente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clientes/C002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"C002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear cuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"accountNumber\": \"ACC001\",\r\n  \"type\": \"SAVINGS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/cuentas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"cuentas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar movimiento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"accountNumber\": \"ACC001\",\r\n  \"amount\": 500000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar retiro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"accountNumber\": \"ACC-001\",\r\n  \"amount\": -5000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reporte de movimientos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/reporte?accountNumber=ACC-001&from=2025-12-01T00:00:00&to=2025-12-31T23:59:59",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"reporte"
+					],
+					"query": [
+						{
+							"key": "accountNumber",
+							"value": "ACC-001"
+						},
+						{
+							"key": "from",
+							"value": "2025-12-01T00:00:00"
+						},
+						{
+							"key": "to",
+							"value": "2025-12-31T23:59:59"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inactivar cliente",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"active\": false\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/clientes/C001/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"C001",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inactivar Cuenta",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"active\": false\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/clientes/C001/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"C001",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Cuentas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cuentas/ACC-001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuentas",
+						"ACC-001"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
