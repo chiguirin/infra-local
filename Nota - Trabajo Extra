@@ -1,0 +1,66 @@
+He realizado las siguientes actualizaciones en los servicios customer y account en la plataforma Railway:
+
+Rama cloud-deployment en Customer y cloud-docker en Account:
+
+Ambos servicios están configurados y desplegados correctamente en Railway, y los endpoints están expuestos de manera pública para pruebas.
+
+Servicios expuestos:
+
+Customer Service: Este servicio está disponible públicamente a través de la siguiente URL:
+
+https://customer-service-production-b93a.up.railway.app
+
+En este endpoint, podrás hacer peticiones como GET /clientes/{customerId} para verificar la existencia de un cliente en la base de datos.
+
+Account Service: El servicio de cuentas también está desplegado y accesible en Railway en:
+
+https://account-service-production-c026.up.railway.app
+
+Puedes probar el endpoint POST /cuentas para crear una nueva cuenta asociada a un cliente existente.
+
+Cómo probar los servicios:
+
+Customer Service:
+Puedes hacer una petición GET para verificar la existencia de un cliente:
+
+curl --location 'https://customer-service-production-b93a.up.railway.app/clientes/C001'
+
+
+Account Service:
+Para crear una cuenta asociada al cliente, utiliza el siguiente endpoint POST:
+
+curl --location 'https://account-service-production-c026.up.railway.app/cuentas' \
+--header 'Content-Type: application/json' \
+--data '{
+  "customerId": "C002",
+  "password": "6654",
+  "name": "Maxi Castillo",
+  "gender": "M",
+  "age": 18,
+  "address": "Calle Fake 123",
+  "phone": "6662920"
+}'
+
+
+Configuración en Docker:
+
+Los contenedores de ambos servicios fueron configurados correctamente para el despliegue en Railway.
+
+En customer-service se actualizó la URL de account-service para que apunte a su URL pública en Railway, asegurando que las comunicaciones entre microservicios sean exitosas.
+
+Errores manejados:
+
+Los posibles errores, como la no existencia del cliente en customer-service, se manejan adecuadamente y son devueltos con una respuesta clara desde account-service.
+
+Los servicios customer y account están completamente operativos en Railway, y sus endpoints son accesibles públicamente para realizar pruebas. Los servicios están configurados para comunicarse entre sí utilizando URLs públicas, y se ha implementado una adecuada gestión de errores.
+
+Para realizar pruebas, puedes utilizar los endpoints mencionados y hacer peticiones a través de cURL o Postman.
+
+Si tienes alguna pregunta adicional o necesitas más información sobre los servicios, no dudes en contactarme.
+
+## Nota:
+El servicio gratuito de la plataforma no permite tener escuchando todo el tiempo las peticiones, asi que si se hace una peticion luego de un tiempo se demorará por que se autodespliega, una vez desplegado funciona sin problema
+
+Saludos,
+
+Jair Castillo
