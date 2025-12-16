@@ -277,6 +277,11 @@ La lógica de negocio no se encuentra en los controllers y no se usan try/catch 
 Este proyecto fue desarrollado únicamente con fines de evaluación técnica.
 
 ---
+## Test Unitarios
+---
+Los test unitarios fueron desarrollados con ayuda de la herramienta DiffBlue Comunity. Usando Mockito y JUnit 5
+---
+
 
 ## Autor
 
