@@ -78,24 +78,25 @@ Puerto por defecto:
 ## Estructura del proyecto
 
 ```
-Pruebas/
-│
-├── README.md
-├── docker-compose.yml
-├── postman_collection.json
+
+├── account-service/
+│   ├── Dockerfile
+│   ├── pom.xml
+│   └── src/
 │
 ├── customer-service/
 │   ├── Dockerfile
 │   ├── pom.xml
 │   └── src/
 │
-└── account-service/
-    ├── Dockerfile
-    ├── pom.xml
-    └── src/
-```
-
-En la raíz del proyecto se incluye una **colección de Postman** con los endpoints principales para facilitar las pruebas.
+└── infra-local/
+    ├── README.md
+    ├── docker-compose.yml
+    ├── postman_collection.json
+    └── db/
+        ├── init.sql
+        ├── account-schema.sql
+        └── customer-schema.sql
 
 ---
 
@@ -260,6 +261,7 @@ Este proyecto fue desarrollado únicamente con fines de evaluación técnica.
 ## Autor
 
 Creado por **JAIR CASTILLO**  
-Backend Java Developer  
+Backend Java Developer
+Cel 3204584846
 Experiencia en Java, Spring Boot, microservicios y arquitectura backend.
 
