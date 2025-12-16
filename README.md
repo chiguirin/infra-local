@@ -40,7 +40,9 @@ Puerto por defecto:
 ```
 8080
 ```
-
+```
+Repo: git@github.com:chiguirin/customer-service.git
+```
 ---
 
 ## account-service
@@ -62,6 +64,9 @@ Características:
 Puerto por defecto:
 ```
 8081
+```
+```
+Repo: git@github.com:chiguirin/account-service.git
 ```
 
 ---
