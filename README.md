@@ -270,6 +270,19 @@ Ejemplo de respuesta:
 ```
 
 ---
+## OpenAPI / Swagger
+
+El entorno de infraestructura incluye documentación OpenAPI para los microservicios expuestos.
+Cada servicio publica su definición de API y una interfaz Swagger UI que permite consultar y probar los endpoints de forma interactiva.
+
+Una vez levantados los servicios con Docker Compose, la documentación está disponible en:
+
+Account Service: http://localhost:8080/swagger-ui.html
+
+Customer Service: http://localhost:8081/swagger-ui.html
+
+La documentación se genera automáticamente a partir de los controladores REST, facilitando el entendimiento de los contratos y el consumo de las APIs.
+---
 
 ## Manejo de errores
 
@@ -282,6 +295,7 @@ La lógica de negocio no se encuentra en los controllers y no se usan try/catch 
 Este proyecto fue desarrollado únicamente con fines de evaluación técnica.
 
 ---
+
 ## Test Unitarios
 
 Los test unitarios fueron desarrollados con ayuda de la herramienta DiffBlue Comunity. Usando Mockito y JUnit 5
