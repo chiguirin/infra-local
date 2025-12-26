@@ -110,7 +110,7 @@ git@github.com:chiguirin/infra-local.git
     ├── pom.xml
     └── src/
 └── src/
-
+```
 ---
 
 ## Cómo ejecutar el proyecto
