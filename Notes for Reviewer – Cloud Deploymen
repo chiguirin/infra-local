@@ -1,6 +1,6 @@
 He realizado las siguientes actualizaciones en los servicios customer y account en la plataforma Railway:
 
-Rama cloud-deployment en Customer y cloud-docker en Account:
+Ramas cloud-deployment en Customer y cloud-docker en Account:
 
 Ambos servicios están configurados y desplegados correctamente en Railway, y los endpoints están expuestos de manera pública para pruebas.
 
