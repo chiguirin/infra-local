@@ -1,16 +1,10 @@
+# Infraestructura y Microservicios – Prueba Técnica Backend
 
-# infra-local
-Repositorio de infraestructura local que permite levantar los microservicios y sus bases de datos mediante Docker Compose. Incluye la configuración necesaria para inicializar las bases de datos y facilitar el entorno de desarrollo sin pasos manuales adicionales
+Este proyecto fue desarrollado como parte de una **prueba técnica de arquitectura de microservicios**, con el objetivo de evaluar el diseño de la solución, la estructuración del código y el criterio aplicado durante el desarrollo backend.
 
+La intención no fue construir una solución excesivamente compleja, sino una arquitectura clara, mantenible y alineada a escenarios reales de trabajo, priorizando la separación de responsabilidades, el manejo adecuado de reglas de negocio y la facilidad de despliegue.
 
-# Account y Customer Services
-
-Este proyecto fue desarrollado como parte de una **prueba técnica para sofka**, con el objetivo de analizar el alcance técnico, la forma de estructurar una solución y el criterio aplicado durante el desarrollo backend.
-
-La intención no fue construir algo excesivamente complejo, sino una solución clara, entendible y fácil de mantener, similar a lo que se haría en un entorno real de trabajo.  
-Se priorizó la organización del codigo, la separación de responsabilidades y el manejo correcto de errores de negocio, incluso por encima de optimizaciones prematuras.
-
-El proyecto puede ejecutarse localmente usando Docker, sin configuraciones complicadas ni dependencias externas adicionales.
+La solución puede ejecutarse completamente en local utilizando **Docker**, sin configuraciones manuales adicionales.
 
 ---
 
@@ -18,295 +12,147 @@ El proyecto puede ejecutarse localmente usando Docker, sin configuraciones compl
 
 La solución está compuesta por **dos microservicios independientes**, cada uno con una responsabilidad bien definida y su propia base de datos.
 
-No existe acceso directo entre bases de datos y la comunicación se realiza únicamente a través de APIs REST.
+- No existe acceso directo entre bases de datos
+- La comunicación se realiza únicamente a través de **APIs REST**
+- La infraestructura se desacopla del código mediante Docker Compose
+
+Esta arquitectura permite escalabilidad, mantenibilidad y bajo acoplamiento entre dominios.
 
 ---
 
 ## customer-service
 
-Este microservicio se encarga de la gestión de clientes.
+Microservicio encargado de la gestión de clientes y su información personal.
 
-Responsabilidades principales:
-- Creación de clientes
+### Responsabilidades
+- Creación y administración de clientes
 - Persistencia de información personal
-- Exposición de endpoints REST
+- Exposición de endpoints REST para operaciones CRUD
 
-Características:
+### Características
 - Base de datos propia (PostgreSQL)
 - Validaciones básicas de negocio
 - Manejo de errores mediante excepciones de dominio
 
-Puerto por defecto:
-```
+**Puerto por defecto:**
 8080
-```
-```
-Repo: git@github.com:chiguirin/customer-service.git
-```
+
+**Repositorio:**
+git@github.com:chiguirin/customer-service.git
+
 ---
 
 ## account-service
 
-Este microservicio maneja la lógica relacionada con cuentas y movimientos.
+Microservicio responsable de la gestión de cuentas y movimientos.
 
-Responsabilidades principales:
-- Creación de cuentas
+### Responsabilidades
+- Creación y administración de cuentas
 - Registro de movimientos (depósitos y retiros)
 - Validación de saldo disponible
-- Reporte de movimientos por rango de fechas
-- Manejo de errores de negocio (saldo insuficiente, cuenta no válida, etc)
+- Generación de reportes por rango de fechas
+- Manejo de errores de negocio (saldo insuficiente, cuenta no válida, etc.)
 
-Características:
+### Características
 - Base de datos propia (PostgreSQL)
-- Lógica de negocio centralizada en el service
+- Lógica de negocio centralizada en la capa de servicio
 - Uso de BusinessException y GlobalExceptionHandler
 
-Puerto por defecto:
-```
+**Puerto por defecto:**
 8081
-```
-```
-Repo: git@github.com:chiguirin/account-service.git
-```
+
+**Repositorio:**
+git@github.com:chiguirin/account-service.git
+
+---
+
+## infra-local
+
+Repositorio de infraestructura local que permite levantar los microservicios y sus bases de datos mediante **Docker Compose**.
+
+Incluye la configuración necesaria para inicializar las bases de datos y facilitar el entorno de desarrollo sin pasos manuales adicionales.
+
+**Repositorio:**
+git@github.com:chiguirin/infra-local.git
 
 ---
 
 ## Tecnologías utilizadas
 
-- Java 17  
-- Spring Boot 3.x  
-- Spring Data JPA  
-- PostgreSQL 15  
-- Maven  
-- Docker / Docker Compose  
+- Java 17
+- Spring Boot 3.x
+- Spring Data JPA
+- PostgreSQL 15
+- Maven
+- Docker / Docker Compose
 
 ---
 
 ## Estructura del proyecto
 
-```
-<<<<<<< HEAD
-
-├── account-service/
-│   ├── Dockerfile
-│   ├── pom.xml
-│   └── src/
-=======
-Pruebas/
-│
-├── README.md
-├── docker-compose.yml
-├── postman_collection.json
->>>>>>> 7833234 (Initial commit - local infrastructure with docker-compose)
+.
+├── infra-local/
+│   ├── docker-compose.yml
+│   ├── postman_collection.json
+│   └── db/
+│       ├── init.sql
+│       ├── account-schema.sql
+│       └── customer-schema.sql
 │
 ├── customer-service/
 │   ├── Dockerfile
 │   ├── pom.xml
 │   └── src/
 │
-<<<<<<< HEAD
-└── infra-local/
-    ├── README.md
-    ├── docker-compose.yml
-    ├── postman_collection.json
-    └── db/
-        ├── init.sql
-        ├── account-schema.sql
-        └── customer-schema.sql
-=======
 └── account-service/
     ├── Dockerfile
     ├── pom.xml
     └── src/
-```
-
-En la raíz del proyecto se incluye una **colección de Postman** con los endpoints principales para facilitar las pruebas.
->>>>>>> 7833234 (Initial commit - local infrastructure with docker-compose)
 
 ---
 
 ## Cómo ejecutar el proyecto
 
 ### Requisitos previos
-
 - Java 17
 - Maven
 - Docker Desktop (con Docker Compose habilitado)
 
----
-
-### 1. Compilar los microservicios
+### Compilar los microservicios
 
 Desde cada microservicio ejecutar:
-
-```
 mvn clean package -DskipTests
-```
 
-Esto genera el JAR ejecutable en la carpeta target.
+### Levantar el entorno completo
 
----
-
-### 2. Levantar el entorno completo
-
-Desde la carpeta raíz del proyecto:
-
-```
+Desde la carpeta infra-local:
 docker compose up --build
-```
 
-Esto levantará:
-- customer-db
-- account-db
-- customer-service
-- account-service
-
----
-
-### 3. Detener el entorno
-
-```
+### Detener el entorno
 docker compose down
-```
 
 ---
 
-## Endpoints principales
-
-### customer-service (8080)
-
-Crear cliente
-
-```
-POST /clientes
-```
-
-Ejemplo de request:
-
-```
-{
-  "customerId": "C001",
-  "password": "1234",
-  "name": "Jair Castillo",
-  "gender": "M",
-  "age": 35,
-  "address": "Calle Fake 123",
-  "phone": "3204584846"
-}
-```
-
----
-
-### account-service (8081)
-
-Crear cuenta
-
-```
-POST /cuentas
-```
-
-Registrar movimiento
-
-```
-POST /movimientos
-```
-
-Ejemplo depósito:
-
-```
-{
-  "accountNumber": "ACC001",
-  "amount": 5000
-}
-```
-
-Ejemplo retiro:
-
-```
-{
-  "accountNumber": "ACC001",
-  "amount": -2000
-}
-```
-
-Si el saldo no es suficiente, el servicio responde con **409 Conflict** y un mensaje de error de negocio.
-
----
-
-### Reporte de movimientos
-
-```
-GET /reporte
-```
-
-Parámetros:
-- accountNumber
-- from (fecha inicial)
-- to (fecha final)
-
-Ejemplo:
-
-```
-GET /reporte?accountNumber=ACC001&from=2025-01-01T00:00:00&to=2025-12-31T23:59:59
-```
-
-Ejemplo de respuesta:
-
-```
-[
-  {
-    "date": "2025-12-15T09:10:12",
-    "movementType": "DEPOSIT",
-    "amount": 5000,
-    "balance": 5000
-  },
-  {
-    "date": "2025-12-15T09:12:45",
-    "movementType": "WITHDRAW",
-    "amount": -2000,
-    "balance": 3000
-  }
-]
-```
-
----
 ## OpenAPI / Swagger
 
-El entorno de infraestructura incluye documentación OpenAPI para los microservicios expuestos.
-Cada servicio publica su definición de API y una interfaz Swagger UI que permite consultar y probar los endpoints de forma interactiva.
-
-Una vez levantados los servicios con Docker Compose, la documentación está disponible en:
-
-Account Service: http://localhost:8080/swagger-ui.html
-
-Customer Service: http://localhost:8081/swagger-ui.html
-
-La documentación se genera automáticamente a partir de los controladores REST, facilitando el entendimiento de los contratos y el consumo de las APIs.
----
-
-## Manejo de errores
-
-Los errores de negocio se manejan mediante una excepción propia (BusinessException) y un GlobalExceptionHandler que traduce estas excepciones a respuestas HTTP adecuadas.
-
-La lógica de negocio no se encuentra en los controllers y no se usan try/catch innecesarios.
+- Customer Service: http://localhost:8080/swagger-ui.html
+- Account Service: http://localhost:8081/swagger-ui.html
 
 ---
 
-Este proyecto fue desarrollado únicamente con fines de evaluación técnica.
+## Cumplimiento de la prueba técnica
+
+- F1: CRUD de Cliente, Cuenta y Movimiento
+- F2: Registro de movimientos con actualización de saldo
+- F3: Validación de saldo no disponible
+- F4: Reporte de estado de cuenta por rango de fechas
+- F5: Pruebas unitarias de dominio
+- F6: Pruebas de integración
+- F7: Despliegue en contenedores Docker
 
 ---
-
-## Test Unitarios
-
-Los test unitarios fueron desarrollados con ayuda de la herramienta DiffBlue Comunity. Usando Mockito y JUnit 5
-
-
 
 ## Autor
 
-Creado por **JAIR CASTILLO**  
+Jair Castillo  
 Backend Java Developer
-Cel 3204584846
-Experiencia en Java, Spring Boot, microservicios y arquitectura backend.
-
-
