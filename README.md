@@ -90,7 +90,6 @@ git@github.com:chiguirin/infra-local.git
 
 ## Estructura del proyecto
 
-.
 ├── infra-local/
 │   ├── docker-compose.yml
 │   ├── postman_collection.json
