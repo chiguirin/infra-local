@@ -90,22 +90,25 @@ git@github.com:chiguirin/infra-local.git
 
 ## Estructura del proyecto
 
+```text
+.
 ├── infra-local/
-│ ├── docker-compose.yml
-│ ├── postman_collection.json
-│ └── db/
-│ ├── init.sql
-│ ├── account-schema.sql
-│ └── customer-schema.sql
+│   ├── docker-compose.yml
+│   ├── postman_collection.json
+│   └── db/
+│       ├── init.sql
+│       ├── account-schema.sql
+│       └── customer-schema.sql
 │
 ├── customer-service/
-│ ├── Dockerfile
-│ ├── pom.xml
-│ └── src/
+│   ├── Dockerfile
+│   ├── pom.xml
+│   └── src/
 │
 └── account-service/
-├── Dockerfile
-├── pom.xml
+    ├── Dockerfile
+    ├── pom.xml
+    └── src/
 └── src/
 
 ---
