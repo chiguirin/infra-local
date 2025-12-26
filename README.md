@@ -5,7 +5,7 @@ Repositorio de infraestructura local que permite levantar los microservicios y s
 
 # Account y Customer Services
 
-Este proyecto fue desarrollado como parte de una **prueba técnica para DEVSU**, con el objetivo de analizar el alcance técnico, la forma de estructurar una solución y el criterio aplicado durante el desarrollo backend.
+Este proyecto fue desarrollado como parte de una **prueba técnica para sofka**, con el objetivo de analizar el alcance técnico, la forma de estructurar una solución y el criterio aplicado durante el desarrollo backend.
 
 La intención no fue construir algo excesivamente complejo, sino una solución clara, entendible y fácil de mantener, similar a lo que se haría en un entorno real de trabajo.  
 Se priorizó la organización del codigo, la separación de responsabilidades y el manejo correcto de errores de negocio, incluso por encima de optimizaciones prematuras.
